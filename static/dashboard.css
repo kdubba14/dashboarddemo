@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  background-color: black;
+}
+
+#hero {
+  background: linear-gradient(rgba(0,0,0,1), rgba(0,0,0,.7)), url(../static/blur-bokeh-dark-376533.jpg); 
+  background-size: cover; 
+  background-position: center; 
+  background-attachment: fixed;  
+  height: 100%; 
+  width: 100vw; 
+  color: white; 
+  padding: 0; 
+  margin: 0; 
+  text-align: center;
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+}
+
+#nav div{
+  font-family: grange, sans-serif;
+  font-weight: 600;
+  font-size: 1.75vw;
+}
+
+h1,h2,h3 {
+  font-family: bureau-grot, sans-serif;
+}
+
+#nav a {
+  color: #ffffef;
+  text-decoration: none;
+}
+
+#nav .active {
+  /*text-decoration: underline;*/
+  color: #a79545;
+}
+
+.scroll {
+  transform: translateY(26vh);
+  transition: .8s;
+}
+
+.nav-drop-options :hover {
+  background-color: rgba(34, 20, 49, 0.9);
+}
+
+.nav-drop-links, .nav-drop-options a {
+  font-family: ff-tisa-sans-web-pro, sans-serif;
+  font-weight: 400;
+  color: #ffffef;
+  text-decoration: none !important;
+  font-size: .8rem;
+}
+
+.gone {
+  visibility: hidden;
+}
+
+.footer a{
+  color: #ffffee;
+  text-decoration: none;
+}
+
+ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+p, li {
+  font-family: grange, sans-serif;
+  font-weight: 400;
+}
+
+.timeRangeSelector {
+  width: 15%; 
+  height: 100%; 
+  cursor: pointer;
+}
+
+.timeRangeSelector p {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  font-size: .9rem; 
+  font-weight: 700; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rangeSelected {
+  background-color: white; 
+  color: rgb(50,0,50);
+}
+
+.rangeSelected :hover {
+  background-color: rgba(50,0,50,0.5);
+}
+
+.rangeUnselected :hover {
+  background-color: rgba(255,255,255,0.5);
+  color: black;
+}
+
+
