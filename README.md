@@ -4,6 +4,7 @@ Project link: https://dashboarddemo.kdubba14.now.sh
 
 ## Random Data created using https://www.json-generator.com/
 ### I used the following equation to generate data: 
+```bash
 [
   '{{repeat(100)}}',
   {
@@ -15,6 +16,7 @@ Project link: https://dashboarddemo.kdubba14.now.sh
     price: '{{random("5000", "10000", "20000")}}'
   }
 ]
+```
 
 ## Technologies Used: 
 - Chart.js (react-chartjs-2)
