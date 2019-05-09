@@ -2,7 +2,7 @@ import { HorizontalBar } from 'react-chartjs-2';
 
 const BeatBarChart = (props) => (
 
-  <div className="practiceChart" style={{position: "absolute", width: props.width || "100%", height: "50%", top: "50%", backgroundColor: "rgba(30, 30, 30, 1)"}}>
+  <div className="barChart">
           
     <HorizontalBar options={{
       responsive: true, 

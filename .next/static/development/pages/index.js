@@ -17,14 +17,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var BeatBarChart = function BeatBarChart(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "practiceChart",
-    style: {
-      position: "absolute",
-      width: props.width || "100%",
-      height: "50%",
-      top: "50%",
-      backgroundColor: "rgba(30, 30, 30, 1)"
-    }
+    className: "barChart"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_1__["HorizontalBar"], {
     options: {
       responsive: true,
@@ -87,39 +80,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LicenseDoughnut__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LicenseDoughnut */ "./components/LicenseDoughnut.js");
 /* harmony import */ var _BeatBarChart__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./BeatBarChart */ "./components/BeatBarChart.js");
 /* harmony import */ var _TimeChart__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./TimeChart */ "./components/TimeChart.js");
+/* harmony import */ var react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-chartjs-2 */ "./node_modules/react-chartjs-2/es/index.js");
+
 
 
 
 
 
 var DashboardCharts = function DashboardCharts(props) {
+  var goalProp = {
+    labels: ["Until Goal", "Done"],
+    datasets: [{
+      data: [100 - props.goalPercent, props.goalPercent]
+    }]
+  };
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "dashboardCharts",
-    style: {
-      position: "relative",
-      width: "90%",
-      height: "70vh",
-      margin: "10vh 5% 0 5%",
-      padding: "2.5% 2.5% 4% 2.5%",
-      backgroundColor: "rgba(30, 30, 30, 1)",
-      zIndex: "3",
-      display: "grid",
-      gridTemplateColumns: "30% 60% 10%",
-      gridGap: ".5rem",
-      boxSizing: "border-box"
-    }
+    className: "dashboard-charts"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      position: "relative",
-      height: "100%",
-      width: "100%",
-      display: "grid",
-      gridTemplateRows: "1fr 1fr",
-      gridGap: "1rem",
-      backgroundColor: "rgba(30, 30, 30, 1)",
-      padding: "0 2%",
-      boxSizing: "border-box"
-    }
+    className: "otherCharts"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_LicenseDoughnut__WEBPACK_IMPORTED_MODULE_1__["default"], {
     doughnutData: props.doughnutData
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_BeatBarChart__WEBPACK_IMPORTED_MODULE_2__["default"], {
@@ -127,46 +105,36 @@ var DashboardCharts = function DashboardCharts(props) {
   })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_TimeChart__WEBPACK_IMPORTED_MODULE_3__["default"], {
     timeData: props.timeData
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      height: "100%",
-      width: "100%",
-      display: "grid",
-      gridTemplateRows: "1fr 1fr",
-      gridGap: ".4rem"
-    }
+    className: "otherStats"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      height: "100%",
-      width: "100%",
-      display: "flex",
-      flexDirection: "column"
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-    style: {
-      margin: "auto 0 10% 0",
-      fontSize: "1.5vw"
-    }
-  }, "Sales"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    style: {
-      margin: "10% 0 auto 0"
-    }
-  }, props.totalSales)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    style: {
-      height: "100%",
-      width: "100%",
-      display: "flex",
-      flexDirection: "column"
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
-    style: {
-      margin: "auto 0 10% 0",
-      fontSize: "1.5vw"
-    }
-  }, "Vs. Goal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
-    style: {
-      margin: "10% 0 auto 0"
-    }
-  }, "17%"))));
+    className: "sales-stat stats"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Sales"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, props.totalSales)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "goal-stat stats"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "vs. Goal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, props.goalPercent, "%")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "goal-chart"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_4__["Pie"], {
+    options: {
+      animation: {
+        animateScale: true
+      },
+      layout: {
+        padding: {
+          top: 10
+        }
+      },
+      legend: {
+        display: false
+      },
+      elements: {
+        arc: {
+          backgroundColor: ["rgba(255,255,255,0.45)", "rgba(224,199,77,0.5)"]
+        }
+      },
+      responsive: true,
+      maintainAspectRatio: false
+    },
+    data: goalProp
+  }))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (DashboardCharts);
@@ -294,6 +262,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_corejs2_helpers_esm_slicedToArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime-corejs2/helpers/esm/slicedToArray */ "./node_modules/@babel/runtime-corejs2/helpers/esm/slicedToArray.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _RangeSelectors__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RangeSelectors */ "./components/RangeSelectors.js");
+/* harmony import */ var _DashboardCharts__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./DashboardCharts */ "./components/DashboardCharts.js");
+
+
 
 
 
@@ -312,33 +284,21 @@ var FullDashboard = function FullDashboard(props) {
     }
   };
 
-  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_1___default.a.Fragment, null, props.children, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    style: {
-      position: "relative",
-      width: "90%",
-      height: "8vh",
-      margin: "0 5% 8vh 5%",
-      backgroundColor: "rgba(50, 0, 50, 1)",
-      zIndex: "3",
-      display: "flex",
-      justifyContent: "center"
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    onClick: function onClick() {
-      rangeChange("year"), props._yearRange();
-    },
-    className: "timeRangeSelector ".concat(rangeStyle("year"))
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Past Year")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    onClick: function onClick() {
-      rangeChange("month"), props._monthRange();
-    },
-    className: "timeRangeSelector ".concat(rangeStyle("month"))
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Past Month")), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    onClick: function onClick() {
-      rangeChange("week"), props._weekRange();
-    },
-    className: "timeRangeSelector ".concat(rangeStyle("week"))
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("p", null, "Past Week"))));
+  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+    className: "full-dashboard"
+  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_DashboardCharts__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    goalPercent: props.goalPercent,
+    totalSales: props.totalSales,
+    timeData: props.timeData,
+    barData: props.barData,
+    doughnutData: props.doughnutData
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_RangeSelectors__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    rangeChange: rangeChange,
+    rangeStyle: rangeStyle,
+    _yearRange: props._yearRange,
+    _monthRange: props._monthRange,
+    _weekRange: props._weekRange
+  }));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (FullDashboard);
@@ -362,13 +322,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var LicenseDoughnut = function LicenseDoughnut(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "practiceChart",
-    style: {
-      position: "absolute",
-      width: "100%",
-      height: "47.5%",
-      backgroundColor: "rgba(30, 30, 30, 1)"
-    }
+    className: "doughnutChart"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_1__["Doughnut"], {
     options: {
       animation: {
@@ -738,6 +692,44 @@ function (_React$Component) {
 
 /***/ }),
 
+/***/ "./components/RangeSelectors.js":
+/*!**************************************!*\
+  !*** ./components/RangeSelectors.js ***!
+  \**************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var RangeSelectors = function RangeSelectors(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "range-selector-group"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      props.rangeChange("year"), props._yearRange();
+    },
+    className: "timeRangeSelector ".concat(props.rangeStyle("year"))
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Past Year")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      props.rangeChange("month"), props._monthRange();
+    },
+    className: "timeRangeSelector ".concat(props.rangeStyle("month"))
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Past Month")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    onClick: function onClick() {
+      props.rangeChange("week"), props._weekRange();
+    },
+    className: "timeRangeSelector ".concat(props.rangeStyle("week"))
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Past Week")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (RangeSelectors);
+
+/***/ }),
+
 /***/ "./components/TimeChart.js":
 /*!*********************************!*\
   !*** ./components/TimeChart.js ***!
@@ -755,13 +747,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var TimeChart = function TimeChart(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "practiceChart",
-    style: {
-      position: "relative",
-      width: "100%",
-      height: "100%",
-      zIndex: "3"
-    }
+    className: "timeChart"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_chartjs_2__WEBPACK_IMPORTED_MODULE_1__["Line"], {
     style: {
       position: "relative",
@@ -43850,6 +43836,7 @@ function (_React$Component) {
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "state", {
       active: "dashboard",
+      goalPercent: 0,
       timeRange: "year",
       totalSales: "$0",
       today: {
@@ -43881,6 +43868,12 @@ function (_React$Component) {
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "_yearRange", function () {
+      // temporary
+      _this.setState({
+        goalPercent: 17
+      }); // xxxxxxxxxxxx
+
+
       var _this$state$today = _this.state.today,
           dd = _this$state$today.dd,
           mm = _this$state$today.mm,
@@ -44026,6 +44019,12 @@ function (_React$Component) {
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "_monthRange", function () {
+      // temporary
+      _this.setState({
+        goalPercent: 32
+      }); // xxxxxxxxxxxx
+
+
       var _this$state$today2 = _this.state.today,
           dd = _this$state$today2.dd,
           mm = _this$state$today2.mm,
@@ -44206,6 +44205,12 @@ function (_React$Component) {
     });
 
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_8__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_6__["default"])(_this), "_weekRange", function () {
+      // temporary
+      _this.setState({
+        goalPercent: 0
+      }); // xxxxxxxxxxxx
+
+
       var _this$state$today3 = _this.state.today,
           dd = _this$state$today3.dd,
           mm = _this$state$today3.mm,
@@ -44365,6 +44370,9 @@ function (_React$Component) {
     value: function componentWillMount() {
       var _this2 = this;
 
+      // temporary
+      this.state.goalPercent = 17; // xxxxxxxxxxxx
+
       var today = new Date();
       var dd = today.getDate();
       var mm = today.getMonth() + 1; //January is 0!
@@ -44499,13 +44507,13 @@ function (_React$Component) {
       }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_FullDashboard__WEBPACK_IMPORTED_MODULE_14__["default"], {
         _yearRange: this._yearRange,
         _monthRange: this._monthRange,
-        _weekRange: this._weekRange
-      }, react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_DashboardCharts__WEBPACK_IMPORTED_MODULE_13__["default"], {
+        _weekRange: this._weekRange,
         totalSales: this.state.totalSales,
+        goalPercent: this.state.goalPercent,
         timeData: this.state.timeData,
         barData: this.state.barData,
         doughnutData: this.state.doughnutData
-      }))), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_12__["default"], null));
+      })), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_12__["default"], null));
     }
   }]);
 

@@ -1,4 +1,6 @@
 import {useState} from 'react';
+import RangeSelectors from './RangeSelectors';
+import DashboardCharts from './DashboardCharts';
 
 
 const FullDashboard = (props) => {
@@ -15,39 +17,13 @@ const FullDashboard = (props) => {
 
   return (
   
-    <React.Fragment>
+    <div className="full-dashboard" >
     
-      {props.children}
+      <DashboardCharts goalPercent={props.goalPercent} totalSales={props.totalSales} timeData={props.timeData} barData={props.barData} doughnutData={props.doughnutData} />
       
-      <div style={{position: "relative", width: "90%", height: "8vh", margin: "0 5% 8vh 5%", backgroundColor: "rgba(50, 0, 50, 1)", zIndex: "3", display: "flex", justifyContent: "center"}}>
-              
-        <div 
-          onClick={() => {rangeChange("year"), props._yearRange()}} 
-          className={`timeRangeSelector ${rangeStyle("year")}`}>
-          
-          <p>Past Year</p>
-          
-        </div>
+      <RangeSelectors rangeChange={rangeChange} rangeStyle={rangeStyle} _yearRange={props._yearRange} _monthRange={props._monthRange} _weekRange={props._weekRange} />
 
-        <div 
-          onClick={() => {rangeChange("month"), props._monthRange()}} 
-          className={`timeRangeSelector ${rangeStyle("month")}`}>
-          
-          <p>Past Month</p>
-
-        </div>
-
-        <div 
-          onClick={() => {rangeChange("week"), props._weekRange()}} 
-          className={`timeRangeSelector ${rangeStyle("week")}`}>
-          
-          <p>Past Week</p>
-
-        </div>
-
-      </div>
-
-    </React.Fragment>
+    </div>
 
   )
 }

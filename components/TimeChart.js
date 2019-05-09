@@ -1,7 +1,7 @@
 import { Line } from 'react-chartjs-2';
 
 const TimeChart = (props) => (
-  <div className="practiceChart" style={{position: "relative", width: "100%", height: "100%", zIndex: "3"}}>
+  <div className="timeChart" >
     <Line style={{position: "relative", zIndex: "1"}} options={{
       // tooltips: {
         // ADD TOOLTIPS CALLBACK TO SHOW PURCHASE AMOUNT

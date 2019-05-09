@@ -2,7 +2,7 @@ import { Doughnut } from 'react-chartjs-2';
 
 const LicenseDoughnut = (props) => (
 
-  <div className="practiceChart" style={{position: "absolute", width: "100%", height: "47.5%", backgroundColor: "rgba(30, 30, 30, 1)"}}>
+  <div className="doughnutChart">
           
     <Doughnut options={{
       animation: {

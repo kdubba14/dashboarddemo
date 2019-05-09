@@ -2,7 +2,6 @@ import React from 'react';
 import Head from 'next/head';
 import Nav from '../components/Nav';
 import Footer from '../components/Footer';
-import DashboardCharts from '../components/DashboardCharts';
 import FullDashboard from '../components/FullDashboard';
 
 import DemoData from '../components/demoData';
@@ -27,6 +26,7 @@ import DemoData from '../components/demoData';
 class Index extends React.Component {
   state={
     active: "dashboard", 
+    goalPercent: 0, 
     timeRange: "year", 
     totalSales: "$0", 
     today: {
@@ -66,6 +66,12 @@ class Index extends React.Component {
 
 
   componentWillMount(){
+    
+    
+    // temporary
+    this.state.goalPercent = 17
+  // xxxxxxxxxxxx
+    
     
     let today = new Date();
     let dd = today.getDate();
@@ -194,6 +200,14 @@ class Index extends React.Component {
   
 
   _yearRange = () => {
+
+
+    // temporary
+    this.setState({
+      goalPercent: 17
+    })
+  // xxxxxxxxxxxx
+
 
     let {dd, mm, yyyy} = this.state.today
     let stateDate = this.state.today.date
@@ -369,6 +383,14 @@ class Index extends React.Component {
   
 
   _monthRange = () => {
+
+
+    // temporary
+    this.setState({
+      goalPercent: 32
+    })
+    // xxxxxxxxxxxx
+
 
     let {dd, mm, yyyy, date} = this.state.today
 
@@ -585,6 +607,13 @@ class Index extends React.Component {
 
   _weekRange = () => {
 
+    // temporary
+      this.setState({
+        goalPercent: 0
+      })
+    // xxxxxxxxxxxx
+    
+    
     let {dd, mm, yyyy} = this.state.today
     let stateDate = this.state.today.date
 
@@ -788,11 +817,15 @@ class Index extends React.Component {
           <Nav active={this.state.active} />
           <div className="under-nav" style={{height: "8vh", width: "100vh"}} />
 
-          <FullDashboard _yearRange={this._yearRange} _monthRange={this._monthRange} _weekRange={this._weekRange}>
-
-            <DashboardCharts totalSales={this.state.totalSales} timeData={this.state.timeData} barData={this.state.barData} doughnutData={this.state.doughnutData} />
-
-          </FullDashboard>
+          <FullDashboard 
+            _yearRange={this._yearRange} 
+            _monthRange={this._monthRange} 
+            _weekRange={this._weekRange} 
+            totalSales={this.state.totalSales} 
+            goalPercent={this.state.goalPercent} 
+            timeData={this.state.timeData} 
+            barData={this.state.barData} 
+            doughnutData={this.state.doughnutData} />
           
         </div>
 

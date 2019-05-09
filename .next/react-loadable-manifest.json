@@ -823,7 +823,7 @@
       "publicPath": "static/chunks/commons.facba1f76be43292291a.js"
     }
   ],
-  "../modules/_core": [
+  "../../modules/_core": [
     {
       "id": "WEpk",
       "name": "./node_modules/core-js/library/modules/_core.js",
@@ -1047,7 +1047,7 @@
       "publicPath": "static/chunks/commons.facba1f76be43292291a.js"
     }
   ],
-  "../../helpers/esm/typeof": [
+  "@babel/runtime-corejs2/helpers/esm/typeof": [
     {
       "id": "dhhW",
       "name": "./node_modules/@babel/runtime-corejs2/helpers/esm/typeof.js",
@@ -1319,7 +1319,7 @@
       "publicPath": "static/chunks/commons.facba1f76be43292291a.js"
     }
   ],
-  "../../core-js/object/keys": [
+  "@babel/runtime-corejs2/core-js/object/keys": [
     {
       "id": "pLtp",
       "name": "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js",
