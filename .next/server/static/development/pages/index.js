@@ -478,64 +478,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var navStyle = {
-  height: "8vh",
-  width: "100%",
-
-  /* position: "fixed", 
-  top: "0", 
-  left: "0", 
-  right: "0", */
-  backgroundColor: "rgba(0,0,0,0.95)",
-  color: "rgb(255,255,235)",
-  // zIndex: "9", 
-  display: "block"
-};
-var navStyle2 = {
-  height: "6vh",
-  width: "100%",
-  position: "relative",
-  bottom: "26vh",
-  transition: ".6s",
-
-  /*position: "fixed", 
-  top: "8vh", 
-  left: "0", 
-  right: "0", 
-  backgroundColor: "rgba(0,0,0,0.6)", */
-  color: "rgb(255,255,235)",
-  zIndex: "-1"
-};
-var navStyle3 = {
-  height: "6vh",
-  width: "100%",
-  position: "relative",
-  bottom: "26vh",
-  transition: ".5s",
-
-  /*position: "fixed", 
-  top: "8vh", 
-  left: "0", 
-  right: "0", 
-  backgroundColor: "rgba(0,0,0,0.6)", */
-  color: "rgb(255,255,235)",
-  zIndex: "-1"
-};
-var navStyle4 = {
-  height: "6vh",
-  width: "100%",
-  position: "relative",
-  bottom: "26vh",
-  transition: ".4s",
-
-  /*position: "fixed", 
-  top: "8vh", 
-  left: "0", 
-  right: "0", 
-  backgroundColor: "rgba(0,0,0,0.6)", */
-  color: "rgb(255,255,235)",
-  zIndex: "-1"
-};
 
 var active = function active(navName, activeState) {
   if (navName === activeState) {
@@ -563,6 +505,26 @@ function (_React$Component) {
       }
     });
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "showLinks", function () {
+      // let keepDown = () => {
+      //   return " keep mobile links down"
+      // }
+      if (_this.state.mobileScroll) {
+        if (_this.state.showMobileLinks) {
+          return " mobile-scroll";
+        } else {
+          return " show-mobile-links-up";
+        }
+      } else {
+        if (_this.state.showMobileLinks) {
+          //setTimeout(() => keepDown(),900)
+          return " show-mobile-links-down";
+        } else {
+          return " show-mobile-links-up";
+        }
+      }
+    });
+
     Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "_accHoverOn", function () {
       _this.setState({
         accountScroll: true
@@ -575,8 +537,22 @@ function (_React$Component) {
       });
     });
 
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "_accClickMobile", function () {
+      _this.setState({
+        mobileScroll: !_this.state.mobileScroll
+      });
+    });
+
+    Object(_babel_runtime_corejs2_helpers_esm_defineProperty__WEBPACK_IMPORTED_MODULE_6__["default"])(Object(_babel_runtime_corejs2_helpers_esm_assertThisInitialized__WEBPACK_IMPORTED_MODULE_4__["default"])(_this), "_showMobileLinks", function () {
+      _this.setState({
+        showMobileLinks: !_this.state.showMobileLinks
+      });
+    });
+
     _this.state = {
       accountScroll: false,
+      mobileScroll: false,
+      showMobileLinks: false,
       settingsScroll: false
     };
     return _this;
@@ -586,81 +562,42 @@ function (_React$Component) {
     key: "render",
     value: function render() {
       return react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        id: "navWhole",
-        style: {
-          width: "100vw",
-          height: "8vh",
-          position: "fixed",
-          top: "0",
-          right: "0",
-          left: "0",
-          zIndex: "10"
-        }
+        id: "navWhole"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        id: "nav",
-        style: navStyle
+        id: "mainNav"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "container",
-        style: {
-          boxSizing: "border-box",
-          width: "100%",
-          height: "100%",
-          padding: "0 15%"
-        }
+        className: "nav-container"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        style: {
-          float: "left",
-          height: "100%",
-          display: "flex",
-          width: "30%"
-        }
+        className: "nav-logo"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("h3", {
         style: {
           margin: "auto auto auto 0",
           verticalAlign: "center"
         }
       }, "DASHBOARD")), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        className: "navMobileRight"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        onClick: this._showMobileLinks,
+        className: "nav-button"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("img", {
+        src: "../static/menu-button.svg"
+      }))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         id: "navLinks",
-        style: {
-          float: "right",
-          clear: "right",
-          width: "70%",
-          height: "100%",
-          textAlign: "right"
-        }
+        className: this.showLinks()
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         name: "dashboard",
-        style: {
-          margin: "auto 0 auto 5%",
-          height: "100%",
-          width: "15%",
-          display: "inline-flex",
-          boxSizing: "border-box"
-        }
+        className: "nav-link"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
         className: active("dashboard", this.props.active),
-        href: "#",
-        style: {
-          height: "min-content",
-          margin: "auto 0 auto auto"
-        }
+        href: "#"
       }, "Dashboard")), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         onMouseEnter: this._accHoverOn,
         onMouseLeave: this._accHoverOff,
+        onClick: this._accClickMobile,
         name: "account",
-        style: {
-          margin: "auto 0 auto 5%",
-          height: "100%",
-          width: "15%",
-          display: "inline-flex",
-          boxSizing: "border-box"
-        }
+        className: "nav-link"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: active("account", this.props.active),
-        style: {
-          height: "min-content",
-          margin: "auto 0 auto auto"
-        }
+        className: active("account", this.props.active)
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
         href: "#"
       }, "Account"), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("img", {
@@ -671,109 +608,46 @@ function (_React$Component) {
           marginTop: "7.5%"
         }
       })))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "anotha",
-        style: {
-          margin: "auto 0 auto 5%",
-          height: "100%",
-          width: "10%",
-          display: "inline-flex"
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         name: "media",
-        style: {
-          display: "flex",
-          margin: "auto 0 auto auto"
-        }
+        className: "nav-link"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
         className: active("media", this.props.active),
-        href: "#",
-        style: {
-          height: "min-content",
-          margin: "auto 0 auto auto"
-        }
-      }, "Media"))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
+        href: "#"
+      }, "Media")), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
         name: "settings",
-        style: {
-          margin: "auto 0 auto 5%",
-          height: "100%",
-          width: "15%",
-          display: "inline-flex",
-          boxSizing: "border-box"
-        }
+        className: "nav-link"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
         className: active("settings", this.props.active),
-        href: "#",
-        style: {
-          height: "min-content",
-          margin: "auto 0 auto auto"
-        }
+        href: "#"
       }, "Settings"))))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: this.accScroll(),
+        className: this.showLinks(),
         onMouseEnter: this._accHoverOn,
         onMouseLeave: this._accHoverOff,
-        id: "dropdowns",
-        style: {
-          width: "12.25%",
-          marginRight: "29.65%",
-          marginLeft: "58.1%",
-          height: "auto",
-          position: "relative",
-          bottom: "26vh",
-          zIndex: "-1",
-          transition: ".6s",
-          backgroundColor: "rgba(56, 29, 73, 0.9)"
-        }
+        id: "dropdowns"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "nav-drop-options ".concat(this.accScroll()),
-        style: navStyle2
+        className: "nav-drop-options nav-drop-1 ".concat(this.accScroll())
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
         href: "#",
-        className: "nav-drop-links",
-        style: {
-          float: "right",
-          clear: "right",
-          width: "100%",
-          height: "100%",
-          textAlign: "right",
-          display: "flex"
-        }
+        className: "nav-drop-links"
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("span", {
         style: {
           margin: "auto"
         }
       }, "Your Site"))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "nav-drop-options ".concat(this.accScroll()),
-        style: navStyle3
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "nav-drop-links",
-        style: {
-          float: "right",
-          clear: "right",
-          width: "100%",
-          height: "100%",
-          textAlign: "right",
-          display: "flex"
-        }
+        className: "nav-drop-options nav-drop-2 ".concat(this.accScroll())
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
         href: "#",
+        className: "nav-drop-links"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("span", {
         style: {
           margin: "auto"
         }
       }, "Payments"))), react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "nav-drop-options ".concat(this.accScroll()),
-        style: navStyle4
-      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("div", {
-        className: "nav-drop-links",
-        style: {
-          float: "right",
-          clear: "right",
-          width: "100%",
-          height: "100%",
-          textAlign: "right",
-          display: "flex"
-        }
+        className: "nav-drop-options nav-drop-3 ".concat(this.accScroll())
       }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("a", {
         href: "#",
+        className: "nav-drop-links"
+      }, react__WEBPACK_IMPORTED_MODULE_7___default.a.createElement("span", {
         style: {
           margin: "auto"
         }
@@ -2282,10 +2156,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var next_server_head__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(next_server_head__WEBPACK_IMPORTED_MODULE_10__);
 /* harmony import */ var _components_Nav__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/Nav */ "./components/Nav.js");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../components/Footer */ "./components/Footer.js");
-/* harmony import */ var _components_DashboardCharts__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/DashboardCharts */ "./components/DashboardCharts.js");
-/* harmony import */ var _components_FullDashboard__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/FullDashboard */ "./components/FullDashboard.js");
-/* harmony import */ var _components_demoData__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ../components/demoData */ "./components/demoData.js");
-
+/* harmony import */ var _components_FullDashboard__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../components/FullDashboard */ "./components/FullDashboard.js");
+/* harmony import */ var _components_demoData__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../components/demoData */ "./components/demoData.js");
 
 
 
@@ -2380,7 +2252,7 @@ function (_React$Component) {
           mm = _this$state$today.mm,
           yyyy = _this$state$today.yyyy;
       var stateDate = _this.state.today.date;
-      var sortedData = _components_demoData__WEBPACK_IMPORTED_MODULE_15__["default"].sort(function (a, b) {
+      var sortedData = _components_demoData__WEBPACK_IMPORTED_MODULE_14__["default"].sort(function (a, b) {
         return a.orderDate.localeCompare(b.orderDate);
       });
       var addSale = 0;
@@ -2531,7 +2403,7 @@ function (_React$Component) {
           mm = _this$state$today2.mm,
           yyyy = _this$state$today2.yyyy,
           date = _this$state$today2.date;
-      var sortedData = _components_demoData__WEBPACK_IMPORTED_MODULE_15__["default"].sort(function (a, b) {
+      var sortedData = _components_demoData__WEBPACK_IMPORTED_MODULE_14__["default"].sort(function (a, b) {
         return a.orderDate.localeCompare(b.orderDate);
       });
       var addSale = 0;
@@ -2717,7 +2589,7 @@ function (_React$Component) {
           mm = _this$state$today3.mm,
           yyyy = _this$state$today3.yyyy;
       var stateDate = _this.state.today.date;
-      var sortedData = _components_demoData__WEBPACK_IMPORTED_MODULE_15__["default"].sort(function (a, b) {
+      var sortedData = _components_demoData__WEBPACK_IMPORTED_MODULE_14__["default"].sort(function (a, b) {
         return a.orderDate.localeCompare(b.orderDate);
       });
       var addSale = 0;
@@ -2892,7 +2764,7 @@ function (_React$Component) {
       this.state.today.mm = mm;
       this.state.today.yyyy = yyyy;
       this.state.today.date = yyyy + '-' + mm + '-' + dd;
-      var sortedData = _components_demoData__WEBPACK_IMPORTED_MODULE_15__["default"].sort(function (a, b) {
+      var sortedData = _components_demoData__WEBPACK_IMPORTED_MODULE_14__["default"].sort(function (a, b) {
         return a.orderDate.localeCompare(b.orderDate);
       });
       var addSale = 0;
@@ -3005,7 +2877,7 @@ function (_React$Component) {
           height: "8vh",
           width: "100vh"
         }
-      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_FullDashboard__WEBPACK_IMPORTED_MODULE_14__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_9___default.a.createElement(_components_FullDashboard__WEBPACK_IMPORTED_MODULE_13__["default"], {
         _yearRange: this._yearRange,
         _monthRange: this._monthRange,
         _weekRange: this._weekRange,

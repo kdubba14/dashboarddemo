@@ -1,63 +1,5 @@
 
 
-const navStyle = {
-  height: "8vh", 
-  width: "100%", 
-  /* position: "fixed", 
-  top: "0", 
-  left: "0", 
-  right: "0", */
-  backgroundColor: "rgba(0,0,0,0.95)", 
-  color: "rgb(255,255,235)", 
-  // zIndex: "9", 
-  display: "block"
-}
-
-const navStyle2 = {
-  height: "6vh", 
-  width: "100%", 
-  position: "relative", 
-  bottom: "26vh", 
-  transition: ".6s",  
-  /*position: "fixed", 
-  top: "8vh", 
-  left: "0", 
-  right: "0", 
-  backgroundColor: "rgba(0,0,0,0.6)", */
-  color: "rgb(255,255,235)", 
-  zIndex: "-1"
-}
-
-const navStyle3 = {
-  height: "6vh", 
-  width: "100%", 
-  position: "relative", 
-  bottom: "26vh",  
-  transition: ".5s",  
-  /*position: "fixed", 
-  top: "8vh", 
-  left: "0", 
-  right: "0", 
-  backgroundColor: "rgba(0,0,0,0.6)", */
-  color: "rgb(255,255,235)", 
-  zIndex: "-1"
-}
-
-const navStyle4 = {
-  height: "6vh", 
-  width: "100%", 
-  position: "relative", 
-  bottom: "26vh", 
-  transition: ".4s",  
-  /*position: "fixed", 
-  top: "8vh", 
-  left: "0", 
-  right: "0", 
-  backgroundColor: "rgba(0,0,0,0.6)", */
-  color: "rgb(255,255,235)", 
-  zIndex: "-1"
-}
-
 const active = (navName, activeState) => {
   if (navName === activeState) {
     return "active"
@@ -71,6 +13,8 @@ class Nav extends React.Component{
 
     this.state={
       accountScroll: false, 
+      mobileScroll: false, 
+      showMobileLinks: false, 
       settingsScroll: false
     }
   }
@@ -81,6 +25,29 @@ class Nav extends React.Component{
     }
     else{
       return "gone"
+    }
+  }
+
+
+
+  showLinks = () => {
+    // let keepDown = () => {
+    //   return " keep mobile links down"
+    // }
+    if (this.state.mobileScroll){
+      if (this.state.showMobileLinks) {
+        
+        return " mobile-scroll"
+      }else{
+        return " show-mobile-links-up"
+      }
+    }else{
+      if (this.state.showMobileLinks) {
+        //setTimeout(() => keepDown(),900)
+        return " show-mobile-links-down"
+      }else{
+        return " show-mobile-links-up"
+      }
     }
   }
 
@@ -96,28 +63,47 @@ class Nav extends React.Component{
     })
   }
 
+  _accClickMobile = () => {
+    this.setState({
+      mobileScroll: !this.state.mobileScroll
+    })
+  }
+
+  _showMobileLinks = () => {
+    this.setState({
+      showMobileLinks: !this.state.showMobileLinks
+    })
+  }
+
   render(){
     return (
   
-      <div id="navWhole" style={{width: "100vw", height: "8vh", position: "fixed", top: "0", right: "0", left: "0", zIndex: "10"}}>
-        <div id="nav" style={navStyle}>
-          <div className="container" style={{boxSizing: "border-box", width: "100%", height: "100%", padding: "0 15%"}}>
+      <div id="navWhole">
+        <div id="mainNav">
+          <div className="nav-container">
             
-            <div style={{float: "left", height: "100%", display: "flex", width: "30%"}}>
+            <div className="nav-logo">
               <h3 style={{margin: "auto auto auto 0", verticalAlign: "center"}}>DASHBOARD</h3>
             </div>
 
-            <div id="navLinks" style={{float: "right", clear: "right", width: "70%", height: "100%", textAlign: "right"}}>
+            <div className="navMobileRight">
+              <div onClick={this._showMobileLinks} className="nav-button">
+                <img src="../static/menu-button.svg"/>
+              </div>
+            </div>
+
+            <div id="navLinks" className={this.showLinks()}>
               
-                <div name="dashboard" style={{margin: "auto 0 auto 5%", height: "100%", width: "15%", display: "inline-flex", boxSizing: "border-box"}}>
-                  <a className={active("dashboard",this.props.active)} href='#' style={{height: "min-content", margin: "auto 0 auto auto"}} >
+                <div name="dashboard" className="nav-link">
+                  <a className={active("dashboard",this.props.active)} href='#'>
                     Dashboard
                   </a>
                 </div>
 
-                <div onMouseEnter={this._accHoverOn} onMouseLeave={this._accHoverOff} name="account" style={{margin: "auto 0 auto 5%", height: "100%", width: "15%", display: "inline-flex", boxSizing: "border-box"}}>
+                <div onMouseEnter={this._accHoverOn} onMouseLeave={this._accHoverOff} 
+                 onClick={this._accClickMobile} name="account" className="nav-link">
                   
-                  <div className={active("account",this.props.active)} style={{height: "min-content", margin: "auto 0 auto auto"}}>
+                  <div className={active("account",this.props.active)}>
                     <a href='#' >
                       Account
                     </a>
@@ -129,21 +115,16 @@ class Nav extends React.Component{
 
                     </span>
                   </div>
-
-                  
-
                 </div>
 
-                <div className="anotha" style={{margin: "auto 0 auto 5%", height: "100%", width: "10%", display: "inline-flex"}}>
-                  <div name="media" style={{display: "flex", margin: "auto 0 auto auto"}}>
-                    <a className={active("media",this.props.active)} href='#' style={{height: "min-content", margin: "auto 0 auto auto"}} >
-                      Media
-                    </a>
-                  </div>
+                <div name="media" className="nav-link">
+                  <a className={active("media",this.props.active)} href='#'>
+                    Media
+                  </a>
                 </div>
                 
-                <div name="settings" style={{ margin: "auto 0 auto 5%", height: "100%", width: "15%", display: "inline-flex", boxSizing: "border-box"}}>
-                  <a className={active("settings",this.props.active)} href='#' style={{height: "min-content", margin: "auto 0 auto auto"}} >
+                <div name="settings" className="nav-link">
+                  <a className={active("settings",this.props.active)} href='#'>
                     Settings
                   </a>
                 </div>
@@ -162,42 +143,34 @@ class Nav extends React.Component{
         
         
         
-        <div className={this.accScroll()} onMouseEnter={this._accHoverOn} onMouseLeave={this._accHoverOff} id="dropdowns" style={{width: "12.25%", marginRight: "29.65%", marginLeft: "58.1%", height: "auto", position: "relative", bottom: "26vh", zIndex: "-1", transition: ".6s", backgroundColor: "rgba(56, 29, 73, 0.9)"}}>
+        <div className={this.showLinks()} onMouseEnter={this._accHoverOn} onMouseLeave={this._accHoverOff} id="dropdowns">
         
-          <div className={`nav-drop-options ${this.accScroll()}`} style={navStyle2}>
+          <div className={`nav-drop-options nav-drop-1 ${this.accScroll()}`}>
           
-              <a href="#" className="nav-drop-links" style={{float: "right", clear: "right", width: "100%", height: "100%", textAlign: "right", display: "flex"}}>
+              <a href="#" className="nav-drop-links">
                 <span style={{margin: "auto"}}>
                   Your Site
                 </span>
               </a>
           </div>
 
-          <div className={`nav-drop-options ${this.accScroll()}`} style={navStyle3}>
+          <div className={`nav-drop-options nav-drop-2 ${this.accScroll()}`}>
 
-              <div className="nav-drop-links" style={{float: "right", clear: "right", width: "100%", height: "100%", textAlign: "right", display: "flex"}}>
-                <a href="#" style={{margin: "auto"}}>
-                  Payments
+                <a href="#" className="nav-drop-links">
+                  <span style={{margin: "auto"}}>Payments</span>
                 </a>
-              </div>
+
           </div>
 
-          <div className={`nav-drop-options ${this.accScroll()}`} style={navStyle4}>
+          <div className={`nav-drop-options nav-drop-3 ${this.accScroll()}`}>
 
-              <div className="nav-drop-links" style={{float: "right", clear: "right", width: "100%", height: "100%", textAlign: "right", display: "flex"}}>
-                <a href="#" style={{margin: "auto"}}>
-                  Stats
+                <a href="#" className="nav-drop-links">
+                  <span style={{margin: "auto"}}>Stats</span>
                 </a>
-              </div>
+
           </div>
         
         </div>
-
-
-
-
-
-
 
       </div>
 )}
